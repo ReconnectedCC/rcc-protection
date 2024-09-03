@@ -1,4 +1,4 @@
-package ct.protection;
+package cc.reconnected.protection;
 
 import net.fabricmc.api.ModInitializer;
 

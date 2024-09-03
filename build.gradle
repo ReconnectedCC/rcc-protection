@@ -16,9 +16,70 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+	mavenLocal()
 	maven {
 		name = "Flemmli97"
 		url "https://gitlab.com/api/v4/projects/21830712/packages/maven"
+	}
+	mavenLocal {
+		content {
+			includeModule("io.sc3", "sc-library")
+			includeModule("io.sc3", "sc-peripherals")
+		}
+	}
+
+	maven {
+		url = uri("https://repo.lem.sh/releases")
+		content {
+			includeGroup("io.sc3")
+		}
+	}
+
+	maven {
+		name = "squiddev"
+		url "https://maven.squiddev.cc"
+		content {
+			includeGroup("cc.tweaked")
+			includeModule("org.squiddev", "Cobalt")
+		}
+	}
+
+	maven {
+		name = "shedaniel"
+		url "https://maven.shedaniel.me"
+		// cloth-config
+		content {
+			includeGroup("me.shedaniel.cloth")
+			includeGroup("me.shedaniel.cloth.api")
+		}
+	}
+
+	maven {
+		name = "terraformersmc"
+		url "https://maven.terraformersmc.com"
+		// Trinkets, mod-menu
+		content {
+			includeModule("dev.emi", "trinkets")
+			includeGroup("com.terraformersmc")
+		}
+	}
+
+	maven {
+		name = "ladysnake"
+		url = "https://maven.ladysnake.org/releases"
+		// Cardinal Components API (dependency of Trinkets)
+		content {
+			includeGroup("dev.onyxstudios.cardinal-components-api")
+		}
+	}
+
+	maven {
+		name = "sonatype"
+		url "https://oss.sonatype.org/content/repositories/snapshots"
+		// fabric-permissions-api (dependency of sc-goodies)
+		content {
+			includeModule("me.lucko", "fabric-permissions-api")
+		}
 	}
 }
 
@@ -36,6 +97,7 @@ dependencies {
 	modRuntimeOnly("io.github.flemmli97:flan:${flan_mcversion}-${flan_version}-fabric") {
 		transitive = false //Remove this if you want to have all those optional dependencies
 	}
+	modImplementation("io.sc3:Plethora-Fabric:1.12.0")
 }
 
 processResources {
@@ -47,7 +109,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 21
+	it.options.release = 17
 }
 
 java {
@@ -56,8 +118,8 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {
