@@ -18,7 +18,7 @@ public abstract class FlanPlethoraProtect {
 
     @Inject(at = @At("HEAD"), method = "canDamageEntity", cancellable = true)
     private void InjectDamageEntity(Entity entity, CallbackInfoReturnable<Boolean> cir) {
-        if (entity.isPlayer()) cir.setReturnValue(!ClaimHandler.canInteract((ServerPlayerEntity) getShooterPlayer(), entity.getBlockPos(), BuiltinPermission.HURTPLAYER));
-        else cir.setReturnValue(!ClaimHandler.canInteract((ServerPlayerEntity) getShooterPlayer(), entity.getBlockPos(), BuiltinPermission.HURTANIMAL));
+        if (entity.isPlayer()) cir.setReturnValue(ClaimHandler.canInteract((ServerPlayerEntity) getShooterPlayer(), entity.getBlockPos(), BuiltinPermission.HURTPLAYER));
+        else cir.setReturnValue(ClaimHandler.canInteract((ServerPlayerEntity) getShooterPlayer(), entity.getBlockPos(), BuiltinPermission.HURTANIMAL));
     }
 }
