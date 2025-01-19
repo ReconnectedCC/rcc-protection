@@ -18,4 +18,12 @@ public abstract class CPAPIPlethoraProtect {
     private void InjectDamageEntity(Entity entity, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(CommonProtection.canDamageEntity(getShooterPlayer().getWorld(), entity,getShooterPlayer().getGameProfile(),getShooterPlayer()));
     }
+    @Inject(at = @At("HEAD"), method = "canBreakBlock", cancellable = true)
+    private void InjectBreakBlock(CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(CommonProtection.canBreakBlock(getShooterPlayer().getWorld(),getShooterPlayer().getBlockPos(),getShooterPlayer().getGameProfile(),getShooterPlayer()));
+    }
+    @Inject(at = @At("HEAD"), method = "tryBreakBlock", cancellable = true)
+    private void InjectTryBreakBlock(CallbackInfoReturnable<Boolean> cir) {
+        cir.setReturnValue(CommonProtection.canBreakBlock(getShooterPlayer().getWorld(),getShooterPlayer().getBlockPos(),getShooterPlayer().getGameProfile(),getShooterPlayer()));
+    }
 }
