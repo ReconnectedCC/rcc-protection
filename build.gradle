@@ -81,6 +81,7 @@ repositories {
 			includeModule("me.lucko", "fabric-permissions-api")
 		}
 	}
+	maven { url "https://maven.nucleoid.xyz/" }
 }
 
 dependencies {
@@ -91,12 +92,7 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modCompileOnly("io.github.flemmli97:flan:${flan_mcversion}-${flan_version}-fabric:api") {
-		transitive = false //Remove this if you want to have all those optional dependencies
-	}
-	modRuntimeOnly("io.github.flemmli97:flan:${flan_mcversion}-${flan_version}-fabric") {
-		transitive = false //Remove this if you want to have all those optional dependencies
-	}
+	modImplementation include("eu.pb4:common-protection-api:${common_protection_version}")
 	modImplementation("io.sc3:Plethora-Fabric:1.12.0")
 }
 
