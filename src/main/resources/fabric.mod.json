@@ -28,7 +28,8 @@
 		"java": ">=17",
 		"fabric-api": "*",
 		"computercraft": "*",
-		"plethora": "*"
+		"plethora": "*",
+		"ledger": "*"
 	},
 	"suggests": {
 		"another-mod": "*"

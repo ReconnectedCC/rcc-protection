@@ -94,6 +94,10 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation include("eu.pb4:common-protection-api:${common_protection_version}")
 	modImplementation("io.sc3:Plethora-Fabric:1.12.0")
+	modImplementation(include("com.github.quiltservertools:Ledger:${ledger_version}"))
+	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinx_coroutines_version}"
+	implementation "com.uchuhimo:konf-core:${konf_version}"
+	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${mixinextras_version}")))
 }
 
 processResources {
