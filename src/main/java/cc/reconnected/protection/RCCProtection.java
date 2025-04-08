@@ -1,6 +1,5 @@
 package cc.reconnected.protection;
 
-import com.github.quiltservertools.ledger.api.ExtensionManager;
 import eu.pb4.common.protection.api.CommonProtection;
 import net.fabricmc.api.ModInitializer;
 
@@ -27,6 +26,5 @@ public class RCCProtection implements ModInitializer {
 		} catch (NullPointerException e) {
 			LOGGER.error("There are no protection providers available! RCC-Protection will not work!");
 		}
-		ExtensionManager.INSTANCE.registerExtension(new LedgerRCCProtectionExtension());
 	}
 }
